@@ -14,8 +14,6 @@ using System.Text;
 using System.Threading;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-
-
 namespace Server
 {
     public class Startup
