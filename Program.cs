@@ -6,6 +6,11 @@ using System.IO;
 using System.Threading;
 using System.Text.Json;
 using Newtonsoft.Json;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+
+
 namespace Server
 {
 
@@ -22,7 +27,7 @@ namespace Server
         ///	Глобальный объект в котором хранится вся история сообщений
         ///	</summary>
 
-        public static List<Message> Messages = new List<Message>();
+        public static List<message> Messages = new List<message>();
 
         ///	<summary>
         ///	Словарь Пользователей (В сети/Не в сети)
@@ -150,7 +155,7 @@ namespace Server
         ///	</summary>
 
         ///	<param name="messages">Массив сообщений</param> 
-        public static async void Save(List<Message> messages)
+        public static async void Save(List<message> messages)
 
         {
 
@@ -203,9 +208,8 @@ namespace Server
 
             {
 
-                using var streamReader = new StreamReader(MessagesPath); Program.Messages = JsonConvert.DeserializeObject<List<Message>>(await
-
-                streamReader.ReadToEndAsync());
+                using var streamReader = new StreamReader(MessagesPath); 
+                Program.Messages = JsonConvert.DeserializeObject<List<message>>(await streamReader.ReadToEndAsync());
 
             }
             catch (Exception)
@@ -234,50 +238,3 @@ namespace Server
 
 }
 
-namespace Server
-{
-
-    ///	<summary>
-    ///	<para>Класс Сообщение</para>
-    ///	</summary>
-
-    public class Message
-
-    {
-        ///	<summary>
-        ///	<br>Ts - время отправки сообщения (по серверу)</br>
-
-        ///	</summary>
-
-        public int Ts { get; set; }
-
-        ///	<summary>
-        ///	<br>Name - имя клиента</br>
-        ///	</summary>
-
-        public string Name { get; set; }
-
-        ///	<summary>
-        ///	<br>Text - сообщение клиента</br>
-        ///	</summary>
-
-        public string Text { get; set; }
-
-        ///	<summary>
-        ///	<br>ToString - функция преобразования полей класса в строку для печати</br>
-
-        ///	</summary>
-        ///	<returns> [Time] Name: Text </returns>
-        public override string ToString()
-
-        {
-
-            //TODO bad code hour +3, local tim was not realse
-
-            return $"[{new DateTime(1970, 1, 1, 3, 0, 0, 0).AddSeconds(Ts)}] {Name}: { Text}";
-
-        }
-
-    }
-
-}

@@ -9,19 +9,12 @@
 
   <ItemGroup>
     <Compile Remove="BaseLogicClass.cs" />
-    <Compile Remove="Controllers\AuthController.cs" />
-    <Compile Remove="Controllers\ChatController.cs" />
-    <Compile Remove="Controllers\RegController.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 
