@@ -71,17 +71,16 @@ namespace Server {
                         {
                             Program.OnlineUsers.Remove(user.Key);
 
-                            Program.Messages.Add(new message
+                        Program.Messages.Add(new message
 
-                            {
-                                Name = "",
+                        {
+                            Name = "",
 
-                                Text = $"{user.Key} left",
+                            Text = $"{user.Key} left",
 
-                                Ts = (int)(DateTime.UtcNow - new DateTime(1970, 1,
+                            Ts = (int)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds }
 
-                            1)).TotalSeconds
-                            });
+                        ) ;  
 
                             Program.OnlineUsersTimeout.Remove(user.Key);
                         }

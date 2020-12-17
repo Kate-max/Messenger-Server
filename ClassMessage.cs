@@ -9,7 +9,6 @@ namespace Server
     ///	<summary>
     ///	<para>Класс Сообщение</para>
     ///	</summary>
-
     public class message
     {
         public string username { get; set; }
@@ -24,7 +23,7 @@ namespace Server
 
             this.text = "Server is running...";
 
-            this.timestamp = DateTime.UtcNow;
+            this.timestamp = DateTime.UtcNow.AddHours(+3);
 
         }
 
